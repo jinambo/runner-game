@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+  //TODO: Make this dynamicaly changed
   public float moveSpeed = 5;
   public float leftRightSpeed = 4;
   static public bool canMove = false;
@@ -45,8 +46,10 @@ public class PlayerMove : MonoBehaviour
 
     if (isJumping == true){
       if (comingDown == false) {
+        // TODO, idk if the jump height should be changed (mby for some bonus jump), just change the 5
         transform.Translate(Vector3.up * Time.deltaTime * 5, Space.World);
       } else {
+        // TODO: here is also needed cahnge the value
         transform.Translate(Vector3.up * Time.deltaTime * -5, Space.World);
       }
     }
