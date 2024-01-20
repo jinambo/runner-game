@@ -10,6 +10,8 @@ public class ObstacleCollision : MonoBehaviour
     public GameObject mainCam;
     public GameObject levelControl;
 
+    public static bool hasStumbled = false;
+
     void OnTriggerEnter(Collider other)
     {
         // Turn off the collider to avoid retriggering
@@ -20,6 +22,9 @@ public class ObstacleCollision : MonoBehaviour
 
         // Play animation
         charModel.GetComponent<Animator>().Play("Stumble Backwards");
+
+        // set true so the another aniamtion isn ot triggered
+        hasStumbled = true;
 
         // Stop counting distance
         levelControl.GetComponent<LevelDistance>().enabled = false;

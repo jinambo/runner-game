@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MainMenuFunction : MonoBehaviour
 {
   public void StartGame(){
+    ObstacleCollision.hasStumbled = false;
+    PlayerMove.canMove = false;
     SceneManager.LoadScene(1);
   }
 

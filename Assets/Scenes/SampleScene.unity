@@ -12653,6 +12653,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   leftRightSpeed: 4
+  isJumping: 0
+  comingDown: 0
+  playerObject: {fileID: 507918300}
 --- !u!143 &1130210012
 CharacterController:
   m_ObjectHideFlags: 0
