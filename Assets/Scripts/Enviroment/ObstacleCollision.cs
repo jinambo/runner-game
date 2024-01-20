@@ -8,6 +8,7 @@ public class ObstacleCollision : MonoBehaviour
     public GameObject charModel;
     public AudioSource crashFX;
     public GameObject mainCam;
+    public GameObject levelControl;
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,10 +21,16 @@ public class ObstacleCollision : MonoBehaviour
         // Play animation
         charModel.GetComponent<Animator>().Play("Stumble Backwards");
 
+        // Stop counting distance
+        levelControl.GetComponent<LevelDistance>().enabled = false;
+
         // Play crash sound effect
         crashFX.Play();
 
         // Enable camera's animation (crash shake)
         mainCam.GetComponent<Animator>().enabled = true;
+
+        //Starts end of run sequence
+        levelControl.GetComponent<EndRunSequence>().enabled = true;
     }
 }

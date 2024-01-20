@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class LevelDistance : MonoBehaviour
 {
     public GameObject distanceDisplay;
+    public GameObject distanceEndDisplay;
     public int distanceRun;
     public bool addingDistance = false;
 
@@ -24,6 +25,7 @@ public class LevelDistance : MonoBehaviour
     IEnumerator AddingDis() {
         distanceRun += 1;
         distanceDisplay.GetComponent<Text>().text = "" + distanceRun;
+        distanceEndDisplay.GetComponent<Text>().text = "" + distanceRun;
 
         yield return new WaitForSeconds(distanceDelay);
         addingDistance = false;
