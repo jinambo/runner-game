@@ -7903,8 +7903,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kunaiPrefab: {fileID: 1326092809}
+  playerPrefab: {fileID: 1130210006}
   kunaiSpawnPoint: {fileID: 437246405}
   charModel: {fileID: 1552119177}
+  activationDistance: 40
 --- !u!114 &752411905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14427,7 +14429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1326092810
 Transform:
   m_ObjectHideFlags: 0
