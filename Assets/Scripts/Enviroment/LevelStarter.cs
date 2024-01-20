@@ -9,6 +9,8 @@ public class LevelStarter : MonoBehaviour
     public GameObject countDown1;
     public GameObject countDownGo;
     public GameObject fadeIn;
+    public AudioSource readyFx;
+    public AudioSource goFx;
 
     void Start()
     {
@@ -19,12 +21,19 @@ public class LevelStarter : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         countDown3.SetActive(true);
+        readyFx.Play();
         yield return new WaitForSeconds(1);
         countDown2.SetActive(true);
+        readyFx.Play();
         yield return new WaitForSeconds(1);
         countDown1.SetActive(true);
+        readyFx.Play();
         yield return new WaitForSeconds(1);
         countDownGo.SetActive(true);
+        goFx.Play();
+
+        // Enable Player's movement
+        PlayerMove.canMove = true;
     }
 
 }
