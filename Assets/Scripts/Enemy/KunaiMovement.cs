@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class KunaiMovement : MonoBehaviour
 {
-    public float speed = 22.0f;
+    public float speed = 20.0f;
 
     void Update()
     {
