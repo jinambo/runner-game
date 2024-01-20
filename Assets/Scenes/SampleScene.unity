@@ -7793,6 +7793,7 @@ GameObject:
   - component: {fileID: 752411902}
   - component: {fileID: 752411901}
   - component: {fileID: 752411904}
+  - component: {fileID: 752411905}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -7809,7 +7810,7 @@ Transform:
   m_GameObject: {fileID: 752411898}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.82, y: 1.57, z: -9.94}
+  m_LocalPosition: {x: 2.09, y: 1.57, z: -9.94}
   m_LocalScale: {x: 0.75, y: 2, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7904,6 +7905,22 @@ MonoBehaviour:
   kunaiPrefab: {fileID: 1326092809}
   kunaiSpawnPoint: {fileID: 437246405}
   charModel: {fileID: 1552119177}
+--- !u!114 &752411905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752411898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc8422097aa34ba0b0c9aa487418422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thePlayer: {fileID: 1130210006}
+  charModel: {fileID: 507918300}
+  crashFX: {fileID: 1853179107}
+  mainCam: {fileID: 963194225}
 --- !u!1 &765845318
 GameObject:
   m_ObjectHideFlags: 0
@@ -14439,7 +14456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e73753f721040b891de188438e3a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 20
 --- !u!65 &1326092812
 BoxCollider:
   m_ObjectHideFlags: 0
