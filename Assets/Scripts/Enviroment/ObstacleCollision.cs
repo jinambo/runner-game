@@ -23,7 +23,7 @@ public class ObstacleCollision : MonoBehaviour
         // Play animation
         charModel.GetComponent<Animator>().Play("Stumble Backwards");
 
-        // set true so the another aniamtion isn ot triggered
+        // set true so the another animation is not triggered
         hasStumbled = true;
 
         // Stop counting distance
