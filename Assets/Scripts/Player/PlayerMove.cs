@@ -52,10 +52,10 @@ public class PlayerMove : MonoBehaviour
     if (isJumping == true){
       if (comingDown == false) {
         // TODO, idk if the jump height should be changed (mby for some bonus jump), just change the 5
-        transform.Translate(Vector3.up * Time.deltaTime * 6, Space.World);
+        transform.Translate(Vector3.up * Time.deltaTime * 5, Space.World);
       } else {
         // TODO: here is also needed cahnge the value
-        transform.Translate(Vector3.up * Time.deltaTime * -6, Space.World);
+        transform.Translate(Vector3.up * Time.deltaTime * -5, Space.World);
       }
     }
 
