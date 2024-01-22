@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
   //TODO: Make this dynamicaly changed
+  public float accelerationFactor = 0.1f;
+  public float maxSpeed = 10f;
   public float moveSpeed = 5f;
   private float originalSpeed;
   private float originalDistanceDelay;
@@ -14,6 +16,7 @@ public class PlayerMove : MonoBehaviour
   public bool isJumping = false;
 
   public bool comingDown = false;
+  public bool isTempSpeed = false;
   public GameObject playerObject;
 
   // Update is called once per frame
@@ -55,6 +58,15 @@ public class PlayerMove : MonoBehaviour
         transform.Translate(Vector3.up * Time.deltaTime * -6, Space.World);
       }
     }
+
+    // Increase speed by distance
+    if (!isTempSpeed) {
+      float distanceFactor = LevelDistance.distanceRun / 20; 
+      float newSpeed = originalSpeed + (distanceFactor * accelerationFactor);
+      IncreaseSpeed(newSpeed, 0, true);
+      Debug.Log("Original Speed: " + newSpeed);
+      Debug.Log("New Speed: " + newSpeed);
+    }
   }
 
   void Start()
@@ -63,18 +75,22 @@ public class PlayerMove : MonoBehaviour
     originalDistanceDelay = LevelDistance.distanceDelay;
   }
 
-  public void IncreaseSpeed(float newSpeed, float duration)
+  public void IncreaseSpeed(float newSpeed, float duration, bool isInfinite)
   {
     // Calc new and original speed difference
-    float speedDiff = originalSpeed / newSpeed;
+    float speedDiff = originalSpeed / newSpeed; // example: 5 / 10 = 0.5
 
     // Set movespeed to the new speed from the params
     moveSpeed = newSpeed; 
 
     // Set new distance delay according to speed diff
-    LevelDistance.distanceDelay = LevelDistance.distanceDelay * speedDiff;
+    LevelDistance.distanceDelay = originalDistanceDelay * speedDiff; // 0.35 * 0.5 = 0.175
 
-    StartCoroutine(ResetSpeed(duration)); // Reset speed after time
+    // If it's not infinite reset speed to original
+    if (!isInfinite) {
+      isTempSpeed = true;
+      StartCoroutine(ResetSpeed(duration)); // Reset speed after time
+    }
   }
 
   IEnumerator ResetSpeed(float duration)
@@ -86,6 +102,8 @@ public class PlayerMove : MonoBehaviour
 
     // Reset distance delay back to original
     LevelDistance.distanceDelay = originalDistanceDelay;
+
+    isTempSpeed = false;
   }
 
   IEnumerator JumpSequence() {
@@ -94,6 +112,7 @@ public class PlayerMove : MonoBehaviour
     yield return new WaitForSeconds(0.45f);
     isJumping = false;
     comingDown = false;
+    transform.position = new Vector3(transform.position.x, 1.5f, transform.position.z);
     if (!ObstacleCollision.hasStumbled) {
       playerObject.GetComponent<Animator>().Play("Run");
     }

@@ -10,15 +10,11 @@ public class RamenTimer : MonoBehaviour
 
   void Update()
   {
-    if (isTimerRunning)
-    {
-      if (timeRemaining > 0)
-      {
+    if (isTimerRunning) {
+      if (timeRemaining > 0) {
         timeRemaining -= Time.deltaTime;
         timerSlider.value = timeRemaining / maxTime;
-      }
-      else
-      {
+      } else {
         isTimerRunning = false;
         gameObject.SetActive(false);
       }

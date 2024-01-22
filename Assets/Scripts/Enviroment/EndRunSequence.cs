@@ -9,6 +9,8 @@ public class EndRunSequence : MonoBehaviour
     public GameObject liveDistance;
     public GameObject endScreen;
     public GameObject fadeOut;
+    public AudioSource gameMusic;
+    public AudioSource overMusic;
 
 
     // Start is called before the first frame update
@@ -19,6 +21,10 @@ public class EndRunSequence : MonoBehaviour
 
     IEnumerator EndSequence(){
         yield return new WaitForSeconds(3);
+
+        gameMusic.Stop();
+        overMusic.Play();
+
         liveCoins.SetActive(false);
         liveDistance.SetActive(false);
         endScreen.SetActive(true);

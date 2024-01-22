@@ -8,7 +8,7 @@ public class LevelDistance : MonoBehaviour
 {
     public GameObject distanceDisplay;
     public GameObject distanceEndDisplay;
-    public int distanceRun;
+    public static int distanceRun;
     public bool addingDistance = false;
 
     //TODO: Preparing for future, when the player will run faster
