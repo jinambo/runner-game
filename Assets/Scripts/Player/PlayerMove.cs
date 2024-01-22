@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
         transform.Translate(Vector3.up * Time.deltaTime * 6, Space.World);
       } else {
         // TODO: here is also needed cahnge the value
-        transform.Translate(Vector3.up * Time.deltaTime * 1, Space.World);
+        transform.Translate(Vector3.up * Time.deltaTime * 6, Space.World);
       }
     }
   }
