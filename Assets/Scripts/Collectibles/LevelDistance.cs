@@ -13,6 +13,8 @@ public class LevelDistance : MonoBehaviour
 
     //TODO: Preparing for future, when the player will run faster
     public static float distanceDelay = 0.35f;
+    // public static float originalDistanceDelay;
+
     void Update()
     {
         if (addingDistance == false) {

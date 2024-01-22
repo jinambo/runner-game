@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
   //TODO: Make this dynamicaly changed
-  public float moveSpeed = 5;
+  public float moveSpeed = 5f;
+  private float originalSpeed;
+  private float originalDistanceDelay;
   public float leftRightSpeed = 4;
   static public bool canMove = false;
 
@@ -38,7 +40,7 @@ public class PlayerMove : MonoBehaviour
       if (Input.GetKey(KeyCode.Space)) {
         if (isJumping == false){
           isJumping = true;
-          playerObject.GetComponent<Animator>().Play("Jump");
+          playerObject.GetComponent<Animator>().Play("Ninja Jump");
           StartCoroutine(JumpSequence());
         }
       }
@@ -47,13 +49,45 @@ public class PlayerMove : MonoBehaviour
     if (isJumping == true){
       if (comingDown == false) {
         // TODO, idk if the jump height should be changed (mby for some bonus jump), just change the 5
-        transform.Translate(Vector3.up * Time.deltaTime * 8, Space.World);
+        transform.Translate(Vector3.up * Time.deltaTime * 6, Space.World);
       } else {
         // TODO: here is also needed cahnge the value
-        transform.Translate(Vector3.up * Time.deltaTime * -8, Space.World);
+        transform.Translate(Vector3.up * Time.deltaTime * 1, Space.World);
       }
     }
   }
+
+  void Start()
+  {
+    originalSpeed = moveSpeed; // Uložení původní rychlosti
+    originalDistanceDelay = LevelDistance.distanceDelay;
+  }
+
+  public void IncreaseSpeed(float newSpeed, float duration)
+  {
+    // Calc new and original speed difference
+    float speedDiff = originalSpeed / newSpeed;
+
+    // Set movespeed to the new speed from the params
+    moveSpeed = newSpeed; 
+
+    // Set new distance delay according to speed diff
+    LevelDistance.distanceDelay = LevelDistance.distanceDelay * speedDiff;
+
+    StartCoroutine(ResetSpeed(duration)); // Reset speed after time
+  }
+
+  IEnumerator ResetSpeed(float duration)
+  {
+    yield return new WaitForSeconds(duration);
+
+    // Reset speed back to original
+    moveSpeed = originalSpeed; 
+
+    // Reset distance delay back to original
+    LevelDistance.distanceDelay = originalDistanceDelay;
+  }
+
   IEnumerator JumpSequence() {
     yield return new WaitForSeconds(0.45f);
     comingDown = true;
