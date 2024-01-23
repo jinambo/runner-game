@@ -6,8 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
   //TODO: Make this dynamicaly changed
   public float accelerationFactor = 0.1f;
-  public float maxSpeed = 10f;
-  public float moveSpeed = 5f;
+  // public float maxSpeed = 10f;
+  public static float moveSpeed = 5f;
   private float originalSpeed;
   private float originalDistanceDelay;
   public float leftRightSpeed = 4;

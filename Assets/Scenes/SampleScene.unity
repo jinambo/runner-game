@@ -14347,8 +14347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accelerationFactor: 0.1
-  maxSpeed: 10
-  moveSpeed: 5
   leftRightSpeed: 4
   isJumping: 0
   comingDown: 0
