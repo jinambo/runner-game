@@ -16,7 +16,7 @@ public class CollectRamen : MonoBehaviour
       ramenFX.Play();
 
       // Increase player's speed and change distance delay
-      playerMoveScript.IncreaseSpeed(10f, 5f, false);
+      playerMoveScript.IncreaseSpeed(PlayerMove.moveSpeed * 2, 5f, false);
 
       ramenTimer.StartTimer();
       this.gameObject.SetActive(false);
